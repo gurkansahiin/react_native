@@ -12,7 +12,7 @@ const App = () => {
         <Stack.Navigator>
 
         <Stack.Screen name='Loginsayfa' component={Login} />
-        <Stack.Screen name='Coin' component={CoinPage} />
+      <Stack.Screen name='Coin' component={CoinPage} />
 
         </Stack.Navigator>
   
