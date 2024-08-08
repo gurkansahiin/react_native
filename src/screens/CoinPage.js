@@ -3,11 +3,15 @@ import { StyleSheet, Text, View, TouchableOpacity, ActivityIndicator } from 'rea
 import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
 
+
 const CoinPage = () => {
   const [selectedCoin, setSelectedCoin] = useState('BTCUSDT');
   const [coinData, setCoinData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [showCoinData, setShowCoinData] = useState(false);
+
+  const binance = process.env.REACT_APP_BINANCE_API_URL;
+
 
   const coins = [
     'BTCUSDT',
@@ -23,7 +27,7 @@ const CoinPage = () => {
     setLoading(true);
     setShowCoinData(false); // Hide the container while fetching data
     try {
-      const response = await axios.get(`https://api.binance.com/api/v3/ticker/24hr?symbol=${selectedCoin}`);
+      const response = await axios.get(`${binance}?symbol=${selectedCoin}`);
       setCoinData(response.data);
       setShowCoinData(true); // Show the container after data is fetched
     } catch (error) {
